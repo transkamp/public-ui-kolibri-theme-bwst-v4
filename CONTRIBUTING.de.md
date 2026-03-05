@@ -1,6 +1,6 @@
 > [English version](./CONTRIBUTING.md)
 
-# Contributing zum `KoliBri` Theme `KERN UX-Standard`
+# Contributing zum `KoliBri` Theme `BWSt`
 
 Vielen Dank für Ihr Interesse am Beitrag zu diesem Projekt! Diese Anleitung hilft Ihnen beim Einstieg.
 
@@ -15,8 +15,8 @@ Vielen Dank für Ihr Interesse am Beitrag zu diesem Projekt! Diese Anleitung hil
 
 ```bash
 # Repository klonen
-git clone https://gitlab.opencode.de/kern-ux/kern-developer-kit.git
-cd kern-developer-kit
+git clone https://gitlab.opencode.de/bwst-ux/bwst-developer-kit.git
+cd bwst-developer-kit
 
 # Abhängigkeiten installieren
 pnpm install
@@ -62,7 +62,7 @@ src/
 ├── tokens/                  # Lokale Design Tokens & Utilities
 ├── mixins/                  # Sass Mixins und Utilities (keine Layer)
 ├── globals.d.ts             # TypeScript Deklarationen für SCSS-Module
-└── index.ts                 # Theme-Einstiegspunkt (exportiert `CUSTOM_THEME`)
+└── index.ts                 # Theme-Einstiegspunkt (exportiert `BWSt`)
 ```
 
 **WICHTIG**: Verwenden Sie Design Tokens aus Ihrem Design System Package, wenn verfügbar. Für Tokens, die noch nicht aus dem Package konsumierbar sind, verwalten Sie lokale Dateien in `src/tokens/` als Teil des Themes.
@@ -86,7 +86,7 @@ Custom Stylelint-Regeln stellen ordnungsgemäße Layer-Nutzung sicher:
 // ✅ Korrekt: :host für Web Component Styling
 @layer kol-theme-global {
 	:host {
-		--font-family: var(--kern-font-family);
+		--font-family: var(--bwst-font-family);
 		background-color: white;
 		color: black;
 	}
@@ -95,7 +95,7 @@ Custom Stylelint-Regeln stellen ordnungsgemäße Layer-Nutzung sicher:
 // ❌ Falsch: :root umgeht Web Component Encapsulation
 @layer kol-theme-global {
 	:root {
-		--font-family: var(--kern-font-family); // Triggers lint error
+		--font-family: var(--bwst-font-family); // Triggers lint error
 	}
 }
 ```
@@ -109,8 +109,8 @@ Custom Stylelint-Regeln stellen ordnungsgemäße Layer-Nutzung sicher:
 // src/components/button.scss
 @layer kol-theme-component {
 	.button {
-		background: var(--kern-color-primary);
-		border-radius: var(--kern-border-radius);
+		background: var(--bwst-color-primary);
+		border-radius: var(--bwst-border-radius);
 	}
 }
 
@@ -118,14 +118,14 @@ Custom Stylelint-Regeln stellen ordnungsgemäße Layer-Nutzung sicher:
 // src/global.scss
 @layer kol-theme-global {
 	:host {
-		--font-family: var(--kern-font-family);
+		--font-family: var(--bwst-font-family);
 	}
 }
 
 // ✅ Korrekt: Utility-Datei ohne Layer
 // src/mixins/typography.scss
-@mixin kern-heading-style {
-	font-family: var(--kern-font-family);
+@mixin bwst-heading-style {
+	font-family: var(--bwst-font-family);
 	font-weight: bold;
 }
 
@@ -276,15 +276,15 @@ pnpm test    # Visual Tests validieren
 2. **Component-Isolation** - Component-Styles betreffen nur ihre Component
 3. **Globale Zurückhaltung** - Globaler Layer nur für theme-weite Variablen und Host-Styles
 4. **Kein Layer-Mixing** - Layered und nicht-layered CSS nicht in derselben Datei mischen
-5. **Respect KERN UX standards** – never modify files in `src/kern/`, only consume their variables
+5. **Respect BWSt UX standards** – never modify files in `src/bwst/`, only consume their variables
 
-## KERN UX integration rules
+## BWSt UX integration rules
 
-- **`@kern-ux/native` package** – official KERN UX standards as external dependency
-- **CSS import** – use `@import '@kern-ux/native/dist/kern.css'` for the KERN base
-- **KERN variables** – use `var(--kern-*)` CSS custom properties in theme styles
-- **Package updates** – update KERN UX standards with `pnpm update @kern-ux/native`
-- **Local additions** – extra tokens from `src/kern/` remain active until the package covers them fully
+- **`@bwst-ux/native` package** – official BWSt UX standards as external dependency
+- **CSS import** – use `@import '@bwst-ux/native/dist/bwst.css'` for the BWSt base
+- **BWSt variables** – use `var(--bwst-*)` CSS custom properties in theme styles
+- **Package updates** – update BWSt UX standards with `pnpm update @bwst-ux/native`
+- **Local additions** – extra tokens from `src/bwst/` remain active until the package covers them fully
 - **CSS-centric** – the package is optimised for CSS distribution, not granular Sass imports
 
 ## Konfigurationsdateien
@@ -297,48 +297,48 @@ pnpm test    # Visual Tests validieren
 | `prettier.config.js` | Code-Formatierungsregeln                       |
 | `stylelint-rules/`   | Custom Stylelint-Regel-Implementierungen       |
 
-## Kern Design System integration
+## BWSt Design System integration
 
 ### Design tokens
 
-**KERN design standards are provided via the `@kern-ux/native` package:**
+**BWSt design standards are provided via the `@bwst-ux/native` package:**
 
 ```scss
-// Import the KERN CSS base
-@import '@kern-ux/native/dist/kern.css';
+// Import the BWSt CSS base
+@import '@bwst-ux/native/dist/bwst.css';
 ```
 
-**Key architectural decision**: the `@kern-ux/native` package is primarily designed for CSS distribution, not granular Sass imports. Therefore the complete KERN CSS base is included as a CSS import.
+**Key architectural decision**: the `@bwst-ux/native` package is primarily designed for CSS distribution, not granular Sass imports. Therefore the complete BWSt CSS base is included as a CSS import.
 
-### Using the KERN UX standards
+### Using the BWSt UX standards
 
 ```scss
-// ✅ Correct: use KERN CSS variables in theme components
+// ✅ Correct: use BWSt CSS variables in theme components
 @layer kol-theme-component {
 	.button {
-		background: var(--kern-color-primary); // Use KERN variable
-		border-radius: var(--kern-border-radius); // Use KERN variable
-		font-family: var(--kern-font-family); // Use KERN variable
+		background: var(--bwst-color-primary); // Use BWSt variable
+		border-radius: var(--bwst-border-radius); // Use BWSt variable
+		font-family: var(--bwst-font-family); // Use BWSt variable
 	}
 }
 
-// ✅ Correct: import KERN CSS as base
-@import '@kern-ux/native/dist/kern.css';
+// ✅ Correct: import BWSt CSS as base
+@import '@bwst-ux/native/dist/bwst.css';
 
 // ❌ Not available: granular Sass imports (package limitation)
-// @use '@kern-ux/native/src/scss/core/tokens' as kern-tokens; // Not supported
+// @use '@bwst-ux/native/src/scss/core/tokens' as bwst-tokens; // Not supported
 ```
 
-**Interaction between `src/kern/` and `@kern-ux/native`:**
+**Interaction between `src/bwst/` and `@bwst-ux/native`:**
 
-- `@kern-ux/native` supplies the standard KERN variables via CSS import
-- `src/kern/` contains additional tokens and workarounds that the package does not yet provide
+- `@bwst-ux/native` supplies the standard BWSt variables via CSS import
+- `src/bwst/` contains additional tokens and workarounds that the package does not yet provide
 - Keep local tokens lightweight and document deviations for a future migration
 - CSS custom properties (`--kern-*`) remain usable without changes
 
 ### Typography
 
-The KERN typography system is supplied via the CSS base from `@kern-ux/native`:
+The BWSt typography system is supplied via the CSS base from `@bwst-ux/native`:
 
 - Font families and weights
 - Heading styles and hierarchy
@@ -347,7 +347,7 @@ The KERN typography system is supplied via the CSS base from `@kern-ux/native`:
 ### Colour system
 
 ```scss
-// KERN colour tokens (use only, do not modify!)
+// BWSt colour tokens (use only, do not modify!)
 --kern-color-primary: #0073e6;
 --kern-color-secondary: #6c757d;
 --kern-color-success: #28a745;
@@ -381,7 +381,7 @@ pnpm test-update  # Snapshots aktualisieren wenn Änderungen beabsichtigt sind
 
 ### Hilfe bekommen
 
-1. Überprüfen Sie die [KERN UX-Standard](https://gitlab.opencode.de/kern-ux).
+1. Überprüfen Sie die [BWSt Styleguide](https://gitlab.opencode.de/bwst-ux).
 2. Untersuchen Sie bestehende Component-Implementierungen in `src/components/`.
 3. Prüfen Sie die Custom Stylelint-Regeln in `stylelint-rules/`.
 4. Führen Sie `pnpm lint` für spezifische Fehlermeldungen aus.

@@ -1,0 +1,45 @@
+@use '../rem' as *;
+@use '../mixins/focus-outline' as *;
+
+@layer kol-theme-component {
+	.accordion__content {
+		padding-right: rem(8);
+		padding-bottom: rem(12);
+		padding-left: rem(36);
+	}
+
+	.kol-span-wc > span {
+		display: flex;
+		place-items: baseline center;
+	}
+
+	:host > div > .kol-heading-wc button {
+		border-radius: var(--border-radius);
+		min-height: rem(calc(2.2 * 16));
+		padding: rem(12) rem(8);
+	}
+
+	:host > div > .kol-heading-wc button .kol-span-wc {
+		gap: rem(8);
+
+		font-size: rem(calc(1.125 * 16));
+		font-weight: 700;
+		line-height: rem(16);
+	}
+
+	:host > div > .kol-heading-wc button .kol-span-wc > span {
+		gap: 0.5em;
+	}
+
+	button:focus {
+		outline: none;
+	}
+
+	:host > .accordion:focus-within {
+		@include focus-outline;
+	}
+
+	.icon {
+		color: var(--color-primary);
+	}
+}

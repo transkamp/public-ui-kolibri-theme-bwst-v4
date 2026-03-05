@@ -1,6 +1,6 @@
 > [Deutsche Version](./CONTRIBUTING.de.md)
 
-# Contributing to the `KoliBri` theme `KERN UX-Standard`
+# Contributing to the `KoliBri` theme `BWSt`
 
 Thank you for your interest in contributing to this project! This guide will help you get started.
 
@@ -61,7 +61,7 @@ src/
 ├── global/                  # Zusätzliche globale Styles (z. B. Icons)
 ├── mixins/                  # Sass Mixins und Utilities (keine Layer)
 ├── globals.d.ts             # TypeScript Deklarationen für SCSS-Module
-└── index.ts                 # Theme-Einstiegspunkt (exportiert `CUSTOM_THEME`)
+└── index.ts                 # Theme-Einstiegspunkt (exportiert `BWSt`)
 
 ## Styling-Regeln
 
@@ -82,7 +82,7 @@ Custom Stylelint-Regeln stellen ordnungsgemäße Layer-Nutzung sicher:
 // ✅ Korrekt: :host für Web Component Styling
 @layer kol-theme-global {
 	:host {
-		--font-family: var(--theme-font-family);
+		--font-family: var(--bwst-font-family);
 		background-color: white;
 		color: black;
 	}

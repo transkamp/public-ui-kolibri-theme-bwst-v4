@@ -7,7 +7,7 @@ Ein benutzerdefiniertes Theme für die barrierefreie Komponentenbibliothek [Koli
 ## Installation
 
 ```bash
-npm install @your-scope/theme-kolibri @public-ui/components
+npm install @public-ui/theme-bwst @public-ui/components
 ```
 
 ### Assets kopieren
@@ -25,7 +25,7 @@ Erstellen Sie dann npm-Scripts in Ihrer `package.json`:
 	"scripts": {
 		"postinstall": "npm run copy-assets",
 		"copy-assets": "npm run copy-theme-assets && npm run copy-kolibri-assets",
-		"copy-theme-assets": "cpy 'node_modules/@your-scope/theme-kolibri/assets/**' 'public/assets/theme' --parents",
+		"copy-theme-assets": "cpy 'node_modules/@public-ui/theme-bwst/assets/**' 'public/assets/theme' --parents",
 		"copy-kolibri-assets": "cpy 'node_modules/@public-ui/components/assets/**' 'public/assets/theme' --parents"
 	}
 }
@@ -72,10 +72,10 @@ Nach dem Kopieren der Assets müssen diese in Ihrer Anwendung eingebunden werden
 
 ```typescript
 import { register } from '@public-ui/components';
-import { CUSTOM_THEME } from '@your-scope/theme-kolibri';
+import { BWSt } from '@public-ui/theme-bwst';
 import { defineCustomElements } from '@public-ui/components/loader';
 
-register(CUSTOM_THEME, defineCustomElements)
+register(BWSt, defineCustomElements)
 	.then(() => {
 		// Theme und KoliBri-Komponenten sind geladen
 	})
@@ -113,10 +113,10 @@ Nach der Installation können Sie die KoliBri-Komponenten mit dem Theme direkt i
 
 		<script type="module">
 			import { register } from '@public-ui/components';
-			import { CUSTOM_THEME } from '@your-scope/theme-kolibri';
+			import { BWSt } from '@public-ui/theme-bwst';
 			import { defineCustomElements } from '@public-ui/components/loader';
 
-			register(CUSTOM_THEME, defineCustomElements)
+			register(BWSt, defineCustomElements)
 				.then(() => {
 					console.log('Theme erfolgreich geladen');
 				})

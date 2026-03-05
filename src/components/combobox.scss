@@ -1,0 +1,163 @@
+@use '../rem' as *;
+@use '../mixins/alert-wc' as *;
+@use '../mixins/input-error' as *;
+@use '../mixins/typography' as *;
+
+$option-height: rem(40);
+$visible-options: 5;
+
+@layer kol-theme-component {
+	:host {
+		@include kol-alert-theme;
+	}
+
+	.combobox {
+		display: block;
+		position: relative;
+
+		&__group {
+			display: inline-flex;
+			width: 100%;
+			padding: 0 rem(8);
+			align-items: center;
+		}
+
+		&__input {
+			position: relative;
+			width: calc(100% - rem(40));
+			flex-grow: 1;
+			border: none;
+
+			&::placeholder {
+				color: var(--color-subtle);
+			}
+
+			&:first-child {
+				padding-left: var(--spacing);
+			}
+
+			&:last-child {
+				padding-right: var(--spacing);
+			}
+		}
+
+		&__icon {
+			display: grid;
+			padding-right: rem(8);
+			padding-left: rem(8);
+			place-items: center;
+
+			&:focus {
+				outline: 0;
+			}
+		}
+
+		&__listbox {
+			border-color: var(--color-subtle);
+			border-style: solid;
+			border-radius: var(--border-radius);
+			width: 100%;
+			max-height: calc($option-height * $visible-options + rem(2));
+			border-width: 1px;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+
+		&__item {
+			display: flex;
+			min-height: $option-height;
+			padding: rem(10) rem(12);
+			align-items: center;
+
+			line-height: 1;
+
+			&[aria-selected],
+			&:focus {
+				color: var(--color-light);
+				background-color: var(--color-primary-variant);
+				outline: 0;
+			}
+		}
+	}
+
+	.kol-input {
+		gap: rem(4);
+	}
+
+	.kol-input .error:not(.hidden-error) {
+		order: 1;
+	}
+
+	.kol-input label {
+		order: 2;
+	}
+
+	.kol-input .input {
+		padding: 0;
+		order: 3;
+	}
+
+	.kol-input .counter {
+		order: 4;
+	}
+
+	.kol-input .hint {
+		order: 5;
+		@include kol-typography-hint;
+	}
+
+	input::placeholder {
+		color: var(--color-subtle);
+	}
+
+	.input {
+		background-color: var(--color-light);
+		border-color: var(--color-subtle);
+		border-style: solid;
+		border-radius: var(--border-radius);
+		padding: 0 rem(8);
+		border-width: 2px;
+	}
+
+	.input:is(.icon-left, .icon-right) {
+		padding-right: rem(16);
+		padding-left: rem(16);
+	}
+
+	.input:is(.icon-left, .icon-right) input {
+		padding-right: rem(8);
+		padding-left: rem(8);
+	}
+
+	.input > input:first-child {
+		padding-left: var(--spacing);
+	}
+
+	.input > input:last-child {
+		padding-right: var(--spacing);
+	}
+
+	:not(.disabled) .input:hover {
+		border-color: var(--color-primary);
+	}
+
+	.required label > span::after {
+		padding-left: 0.125em;
+
+		content: '*';
+	}
+
+	.kol-input.error:not(.hidden-error) {
+		@include input-error;
+	}
+
+	.input {
+		position: relative;
+	}
+
+	.kol-input.disabled .input {
+		color: var(--color-text);
+		background-color: var(--color-mute);
+		border-color: var(--color-mute-variant);
+	}
+}

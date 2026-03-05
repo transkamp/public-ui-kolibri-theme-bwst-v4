@@ -1,275 +1,141 @@
-@use '~@public-ui/components/index' as *;
+@use '../rem' as *;
+@use './focus-outline' as *;
 
-// Reusable button styles with modern, accessible design
-@mixin button($block-classname) {
-	.#{$block-classname} {
-		&__text {
-			color: var(--text-color);
+@mixin kol-button {
+	:is(a, button) > .kol-span-wc {
+		border-style: solid;
+		border-radius: var(--border-radius);
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		padding: rem(8) rem(14);
+		border-width: var(--border-width);
 
-			// Default: normal variant (uses theme colors)
-			background-color: var(--background-color);
-			border-color: var(--text-color);
-			border-style: solid;
-			// Base styles
-			border-radius: 4px;
-			display: flex;
+		font-weight: 400;
+		text-align: center;
+		transition-duration: 0.2s;
+		transition-property: background-color, color, border-color;
+	}
 
-			// Minimum touch target size (44px)
-			min-height: 44px;
-			padding: 10px 16px;
-			border-width: 1px;
-			gap: 8px;
-			align-items: center;
-			justify-content: center;
+	:is(a, button):focus {
+		outline: none;
+	}
 
-			font-weight: 600;
-			transition: all 200ms ease-in-out;
-		}
+	:is(a, button):focus .kol-span-wc {
+		@include focus-outline;
+	}
 
-		// ========== FOCUS STYLES (Keyboard Navigation) ==========
-		&:focus-visible {
-			outline: 3px solid var(--primary-color);
-			border-radius: 4px;
-			outline-offset: 2px;
-		}
+	:is(a, button).primary > .kol-span-wc,
+	:is(a, button).primary:disabled:hover > .kol-span-wc {
+		color: var(--color-light);
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
 
-		// ========== HOVER STATES ==========
-		&:not(:disabled, [aria-disabled='true']):hover {
-			.#{$block-classname}__text {
-				transform: translateY(-2px);
-				box-shadow: 0 4px 12px rgb(0, 0, 0, 0.15);
-			}
-		}
+	:is(a, button).secondary > .kol-span-wc,
+	:is(a, button).secondary:disabled:hover > .kol-span-wc,
+	:is(a, button).normal > .kol-span-wc,
+	:is(a, button).normal:disabled:hover > .kol-span-wc {
+		color: var(--color-primary);
+		background-color: var(--color-light);
+		border-color: var(--color-primary);
+	}
 
-		// ========== ACTIVE/PRESSED STATES ==========
-		&:not(:disabled, [aria-disabled='true']):active {
-			.#{$block-classname}__text {
-				transform: translateY(0);
-				box-shadow: inset 0 2px 4px rgb(0, 0, 0, 0.1);
-			}
-		}
+	:is(a, button).danger > .kol-span-wc,
+	:is(a, button).danger:disabled:hover > .kol-span-wc {
+		color: var(--color-light);
+		background-color: var(--color-danger);
+		border-color: var(--color-danger);
+	}
 
-		// ========== DISABLED STATE ==========
-		&:disabled,
-		&[aria-disabled='true'] {
-			cursor: not-allowed;
+	:is(a, button).ghost > .kol-span-wc,
+	:is(a, button).ghost:disabled:hover > .kol-span-wc {
+		color: var(--color-primary);
+		background-color: var(--color-light);
+		box-shadow: none;
+		border-color: var(--color-light);
+	}
 
-			.#{$block-classname}__text {
-				opacity: 1;
-				color: color-mix(in srgb, var(--text-color) 50%, var(--background-color));
-				background-color: color-mix(in srgb, var(--text-color) 20%, var(--background-color));
-				filter: grayscale(60%);
-				border-color: color-mix(in srgb, var(--text-color) 30%, var(--background-color));
-			}
+	/*-----------*/
+	:is(a, button).primary:active > .kol-span-wc,
+	:is(a, button).primary:hover > .kol-span-wc,
+	:is(a, button).secondary:active > .kol-span-wc,
+	:is(a, button).secondary:hover > .kol-span-wc,
+	:is(a, button).normal:active > .kol-span-wc,
+	:is(a, button).normal:hover > .kol-span-wc,
+	:is(a, button).danger:active > .kol-span-wc,
+	:is(a, button).danger:hover > .kol-span-wc,
+	:is(a, button).ghost:active > .kol-span-wc,
+	:is(a, button).ghost:hover > .kol-span-wc {
+		color: var(--color-light);
+		background-color: var(--color-primary-variant);
+		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+		border-color: var(--color-primary-variant);
+	}
 
-			// Remove hover effects on disabled
-			&:hover {
-				.#{$block-classname}__text {
-					transform: none;
-					box-shadow: none;
-				}
-			}
-		}
+	:is(a, button).danger:active > .kol-span-wc,
+	:is(a, button).danger:hover > .kol-span-wc {
+		background-color: var(--color-danger);
+		border-color: var(--color-danger);
+	}
 
-		// ========== PRIMARY VARIANT ==========
-		&--primary {
-			.#{$block-classname}__text {
-				color: var(--text-contrast-color);
-				background-color: var(--primary-color);
-				border-color: var(--primary-color);
+	:is(a, button):disabled:hover > .kol-span-wc,
+	:is(a, button):focus:hover > .kol-span-wc {
+		box-shadow: none;
+	}
 
-				kol-icon {
-					color: var(--text-contrast-color);
-				}
-			}
+	:is(a, button).primary:active > .kol-span-wc,
+	:is(a, button).secondary:active > .kol-span-wc,
+	:is(a, button).normal:active > .kol-span-wc,
+	:is(a, button).danger:active > .kol-span-wc,
+	:is(a, button).ghost:active > .kol-span-wc {
+		box-shadow: none;
+		outline: none;
+		border-color: var(--color-light);
+	}
 
-			&:not(:disabled, [aria-disabled='true']):hover {
-				.#{$block-classname}__text {
-					background-color: color-mix(in srgb, var(--primary-color) 80%, black);
-					border-color: color-mix(in srgb, var(--primary-color) 80%, black);
+	:is(a, button).hide-label > .kol-span-wc {
+		width: unset;
+		padding: rem(calc(0.8 * 16));
+	}
 
-					kol-icon {
-						color: var(--text-contrast-color);
-					}
-				}
-			}
+	:is(a, button).hide-label > .kol-span-wc > span > span {
+		display: none;
+	}
 
-			&:not(:disabled, [aria-disabled='true']):active {
-				.#{$block-classname}__text {
-					background-color: color-mix(in srgb, var(--primary-color) 60%, black);
-					border-color: color-mix(in srgb, var(--primary-color) 60%, black);
+	:is(a, button).loading > .kol-span-wc .kol-icon {
+		animation: spin 5s infinite linear;
+	}
 
-					kol-icon {
-						color: var(--text-contrast-color);
-					}
-				}
-			}
-		}
+	/** small ghost button */
+	:is(a, button).ghost.small > .kol-span-wc {
+		background-color: transparent;
+		box-shadow: none;
+		border: none;
+	}
 
-		// ========== SECONDARY VARIANT ==========
-		&--secondary {
-			.#{$block-classname}__text {
-				color: var(--text-contrast-color);
-				background-color: var(--accent-color);
-				border-color: var(--accent-color);
+	:is(a, button).ghost.small > .kol-span-wc > span {
+		background-color: var(--color-light);
+		border-color: var(--color-light);
+		border-style: solid;
+		border-radius: 1.5em;
+		border-width: var(--border-width);
+	}
 
-				kol-icon {
-					color: var(--text-contrast-color);
-				}
-			}
+	:is(a, button).ghost.small:active > .kol-span-wc > span,
+	:is(a, button).ghost.small:hover > .kol-span-wc > span,
+	:is(a, button).ghost.small.transparent:active > .kol-span-wc > span,
+	:is(a, button).ghost.small.transparent:hover > .kol-span-wc > span {
+		color: var(--color-light);
+		background-color: var(--color-primary-variant);
+		box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+		border-color: var(--color-primary-variant);
+	}
 
-			&:not(:disabled, [aria-disabled='true']):hover {
-				.#{$block-classname}__text {
-					background-color: color-mix(in srgb, var(--accent-color) 80%, black);
-					border-color: color-mix(in srgb, var(--accent-color) 80%, black);
-
-					kol-icon {
-						color: var(--text-contrast-color);
-					}
-				}
-			}
-
-			&:not(:disabled, [aria-disabled='true']):active {
-				.#{$block-classname}__text {
-					background-color: color-mix(in srgb, var(--accent-color) 60%, black);
-					border-color: color-mix(in srgb, var(--accent-color) 60%, black);
-
-					kol-icon {
-						color: var(--text-contrast-color);
-					}
-				}
-			}
-		}
-
-		// ========== TERTIARY VARIANT ==========
-		&--tertiary {
-			.#{$block-classname}__text {
-				color: var(--primary-color);
-				background-color: transparent;
-				border-color: var(--primary-color);
-
-				kol-icon {
-					color: var(--primary-color);
-				}
-			}
-
-			&:not(:disabled, [aria-disabled='true']):hover {
-				.#{$block-classname}__text {
-					color: color-mix(in srgb, var(--primary-color) 80%, black);
-					background-color: color-mix(in srgb, var(--primary-color) 10%, var(--background-color));
-					border-color: color-mix(in srgb, var(--primary-color) 80%, black);
-
-					kol-icon {
-						color: color-mix(in srgb, var(--primary-color) 80%, black);
-					}
-				}
-			}
-
-			&:not(:disabled, [aria-disabled='true']):active {
-				.#{$block-classname}__text {
-					color: color-mix(in srgb, var(--primary-color) 60%, black);
-					background-color: color-mix(in srgb, var(--primary-color) 20%, var(--background-color));
-					border-color: color-mix(in srgb, var(--primary-color) 60%, black);
-
-					kol-icon {
-						color: color-mix(in srgb, var(--primary-color) 60%, black);
-					}
-				}
-			}
-		}
-
-		// ========== DANGER VARIANT ==========
-		&--danger {
-			.#{$block-classname}__text {
-				color: var(--text-contrast-color);
-				background-color: #c0392b;
-				border-color: #c0392b;
-
-				kol-icon {
-					color: var(--text-contrast-color);
-				}
-			}
-
-			&:not(:disabled, [aria-disabled='true']):hover {
-				.#{$block-classname}__text {
-					background-color: #a93226;
-					border-color: #a93226;
-
-					kol-icon {
-						color: var(--text-contrast-color);
-					}
-				}
-			}
-
-			&:not(:disabled, [aria-disabled='true']):active {
-				.#{$block-classname}__text {
-					background-color: #922b21;
-					border-color: #922b21;
-
-					kol-icon {
-						color: var(--text-contrast-color);
-					}
-				}
-			}
-		}
-
-		// ========== GHOST VARIANT ==========
-		&--ghost {
-			.#{$block-classname}__text {
-				color: var(--primary-color);
-				background-color: transparent;
-				box-shadow: none;
-				border-color: var(--primary-color);
-
-				kol-icon {
-					color: var(--primary-color);
-				}
-			}
-
-			&:not(:disabled, [aria-disabled='true']):hover {
-				.#{$block-classname}__text {
-					color: color-mix(in srgb, var(--primary-color) 80%, black);
-					background-color: color-mix(in srgb, var(--primary-color) 10%, var(--background-color));
-					border-color: color-mix(in srgb, var(--primary-color) 80%, black);
-
-					kol-icon {
-						color: color-mix(in srgb, var(--primary-color) 80%, black);
-					}
-				}
-			}
-
-			&:not(:disabled, [aria-disabled='true']):active {
-				.#{$block-classname}__text {
-					color: color-mix(in srgb, var(--primary-color) 60%, black);
-					background-color: color-mix(in srgb, var(--primary-color) 20%, var(--background-color));
-					border-color: color-mix(in srgb, var(--primary-color) 60%, black);
-
-					kol-icon {
-						color: color-mix(in srgb, var(--primary-color) 60%, black);
-					}
-				}
-			}
-		}
-
-		// ========== REDUCED MOTION ==========
-		@media (prefers-reduced-motion: reduce) {
-			.#{$block-classname}__text {
-				transition: none;
-			}
-
-			&:not(:disabled, [aria-disabled='true']):hover {
-				.#{$block-classname}__text {
-					transform: none;
-					box-shadow: none;
-				}
-			}
-
-			&:not(:disabled, [aria-disabled='true']):active {
-				.#{$block-classname}__text {
-					transform: none;
-					box-shadow: none;
-				}
-			}
-		}
+	/** :is(a,button) with transparent background */
+	:is(a, button).transparent > .kol-span-wc > span,
+	:is(a, button).ghost.small.transparent > .kol-span-wc > span,
+	:is(a, button).transparent > .kol-span-wc {
+		background-color: transparent;
+		border-color: transparent;
 	}
 }

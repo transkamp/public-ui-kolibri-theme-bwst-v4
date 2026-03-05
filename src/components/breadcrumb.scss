@@ -1,0 +1,21 @@
+@use '../rem' as *;
+
+@layer kol-theme-component {
+	li:has(:is(.kol-icon + .kol-link, .kol-icon + span)) .kol-icon {
+		color: var(--color-subtle);
+
+		font-size: rem(12);
+	}
+
+	.kol-link::part(icon) {
+		font-size: rem(20);
+	}
+
+	ul li > :is(span, .kol-link) {
+		line-height: rem(20);
+	}
+
+	ul li:last-child > span {
+		color: var(--color-subtle);
+	}
+}

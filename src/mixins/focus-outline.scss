@@ -1,0 +1,8 @@
+@use '../rem' as *;
+
+@mixin focus-outline {
+	outline: var(--color-primary-variant) solid rem(3);
+	border-radius: var(--border-radius);
+	outline-offset: 2px;
+	transition: 200ms outline-offset linear;
+}
