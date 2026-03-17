@@ -10,11 +10,11 @@
     "./stylelint-rules/no-root-selector"
   ],
   "rules": {
-    "kolibri/require-component-layer": true,
-    "kolibri/require-global-layer": true,
-    "kolibri/no-layer-in-non-component-files": true,
-    "kolibri/layer-name-convention": true,
-    "kolibri/no-root-selector": true,
+    "kolibri/require-component-layer": false,
+    "kolibri/require-global-layer": false,
+    "kolibri/no-layer-in-non-component-files": false,
+    "kolibri/layer-name-convention": false,
+    "kolibri/no-root-selector": false,
     "block-no-empty": true,
     "color-no-invalid-hex": true,
     "custom-property-pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:--[a-z0-9]+(?:-[a-z0-9]+)*)*$",

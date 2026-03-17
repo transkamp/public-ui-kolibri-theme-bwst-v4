@@ -8,6 +8,7 @@
 	}
 
 	:host {
+		background-color: #ca0101; /* smoketest */
 		--label-weight: 700;
 		--label-size: #{rem(calc(0.9 * 16))};
 		--label-color: #000000;

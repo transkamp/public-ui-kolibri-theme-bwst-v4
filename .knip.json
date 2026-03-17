@@ -1,5 +1,5 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "ignore": ["stylelint-rules/index.js", "src/**/*.scss"],
-  "ignoreDependencies": ["@public-ui/visual-tests", "nodemon", "sass"]
+  "ignore": ["stylelint-rules/index.js"],
+  "ignoreDependencies": ["@public-ui/sample-react", "nodemon", "sass"]
 }
