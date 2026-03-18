@@ -1,8 +1,0 @@
-@use '../rem' as *;
-@use '../mixins/alert-wc' as *;
-
-@layer kol-theme-component {
-	:host {
-		@include kol-alert-theme;
-	}
-}
