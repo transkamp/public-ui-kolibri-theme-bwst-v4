@@ -45,6 +45,7 @@
 			gap: var(--button-group-gap);
 			order: var(--button-group-order);
 			flex-wrap: wrap;
+      border-bottom: to-rem(1) solid var(--color-primary);
 		}
 
 		.kol-button {
@@ -77,9 +78,22 @@
 			}
 
 			&.selected {
+        position: relative;
 				.kol-span__container {
-					border-bottom: 0.25em solid;
+					//border-top: 0.25em solid;
 				}
+        &:before {
+          position: absolute;
+          top: 0;
+          content: '';
+          height: calc(to-rem(1 * 16) / 4);
+
+          background-color: var(--color-primary);
+          border-top-right-radius: calc(to-rem(1 * 16) / 8);
+          border-top-left-radius: calc(to-rem(1 * 16) / 8);
+          left: 0;
+          right: 0;
+        }
 			}
 
 			.kol-span__container {
@@ -99,4 +113,6 @@
 			width: 100%;
 		}
 	}
+
+
 }
