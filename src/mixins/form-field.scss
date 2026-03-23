@@ -16,6 +16,9 @@
 				&.kol-alert--type-error {
 					@include kol-input-error-with-kol-alert-error(--color-danger);
 				}
+        .kol-alert__content{
+          font-size: to-rem(14);
+        }
 			}
 		}
 
@@ -42,5 +45,9 @@
 				color: var(--color-danger);
 			}
 		}
+    .kol-form-field__label{
+      font-weight: bold;
+      font-size: to-rem(14);
+    }
 	}
 }

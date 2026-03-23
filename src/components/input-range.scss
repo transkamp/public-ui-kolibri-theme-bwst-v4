@@ -4,6 +4,11 @@
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
+
+  .kol-input-range__input:focus{
+    outline-width: 0;
+  }
+
 	.kol-input-container {
 		padding: 0;
 	}
@@ -25,6 +30,16 @@
 		&__input--range {
 			height: to-rem(8);
 			padding: 0;
+      border-radius: var(--border-radius);
+      border-width: 0;
+      &::-webkit-slider-thumb{
+        -webkit-appearance: none;
+        background: var(--color-primary-variant);
+      }
+
+      &::-moz-range-thumb{
+        background: var(--color-primary-variant);
+      }
 		}
 	}
 }

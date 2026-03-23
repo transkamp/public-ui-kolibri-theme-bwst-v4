@@ -7,6 +7,7 @@
 	@include kol-icon-theme;
 	.kol-accordion {
 		box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
+    box-shadow: 0px 1px 1px rgba(60,64,67,0.3),0 0px 0px 1px rgba(60,64,67,0.15);
 		border-radius: var(--border-radius);
 		display: grid;
 		width: 100%;

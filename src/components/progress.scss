@@ -2,6 +2,13 @@
 
 @layer kol-theme-component {
 	.kol-progress {
+
+    &__bar-background {
+    fill: var(--color-mute);
+    stroke: transparent;
+    outline-width: 0;
+  }
+
 		&__bar-progress {
 			fill: var(--color-primary-variant);
 		}

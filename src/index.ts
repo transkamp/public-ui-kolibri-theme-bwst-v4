@@ -33,6 +33,7 @@ import progressCss from './components/progress.scss';
 import selectCss from './components/select.scss';
 import singleSelect from './components/single-select.scss';
 import skipNavCss from './components/skip-nav.scss';
+import spinCss from './components/spin.scss';
 import splitButtonCss from './components/split-button.scss';
 import tableStatefulCss from './components/table-stateful.scss';
 import tableStatelessCss from './components/table-stateless.scss';
@@ -80,6 +81,7 @@ export const BWSt = KoliBri.createTheme('bwst', {
 	'KOL-SELECT': selectCss,
 	'KOL-SINGLE-SELECT': singleSelect,
 	'KOL-SKIP-NAV': skipNavCss,
+  'KOL-SPIN': spinCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-TABLE-STATEFUL': tableStatefulCss,
 	'KOL-TABLE-STATELESS': tableStatelessCss,
