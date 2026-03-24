@@ -20,6 +20,8 @@
 			outline: none;
 		}
 
+
+
 		&--primary {
 			--text-background-color: var(--color-primary);
 			--text-border-color: var(--color-primary);
@@ -66,7 +68,7 @@
 				--text-color: var(--color-light);
 
 				position: relative;
-				@include focus-outline;
+				//@include focus-outline;
 			}
 		}
 
@@ -103,7 +105,7 @@
 				}
 			}
 
-			@at-root #{$root}:focus {
+			@at-root #{$root}:focus-visible {
 				@include focus-outline;
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
@@ -119,9 +121,15 @@
 
 	.kol-close-button .#{$block-classname}--normal {
 		@include kol-button-ghost();
-
 		--kol-focus-outline-offset: -2px;
 	}
+
+  .kol-button--hide-label{
+    .kol-button__text{
+      padding: 0;
+    }
+  }
+
 }
 
 @mixin kol-button-ghost {
