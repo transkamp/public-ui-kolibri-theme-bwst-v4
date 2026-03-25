@@ -94,30 +94,30 @@ The theme exposes the following CSS custom properties. Each token reads from a `
 
 ### Layout
 
-| Token | Kolibri override | Default |
-|-------|-----------------|---------|
-| `--border-radius` | `--kolibri-border-radius` | `0.25rem` (4px) |
-| `--border-width` | `--kolibri-border-width` | `1px` |
-| `--font-size` | `--kolibri-font-size` | `1rem` (16px) |
-| `--spacing` | `--kolibri-spacing` | `0.25rem` (4px) |
-| `--font-family` | `--kolibri-font-family` | `'Noto Sans Regular', Arial, helvetica, sans-serif` |
+| Token             | Kolibri override          | Default                                             |
+| ----------------- | ------------------------- | --------------------------------------------------- |
+| `--border-radius` | `--kolibri-border-radius` | `0.25rem` (4px)                                     |
+| `--border-width`  | `--kolibri-border-width`  | `1px`                                               |
+| `--font-size`     | `--kolibri-font-size`     | `1rem` (16px)                                       |
+| `--spacing`       | `--kolibri-spacing`       | `0.25rem` (4px)                                     |
+| `--font-family`   | `--kolibri-font-family`   | `'Noto Sans Regular', Arial, helvetica, sans-serif` |
 
 ### Colors
 
-| Token | Kolibri override | Default |
-|-------|-----------------|---------|
-| `--color-primary` | `--kolibri-color-primary` | `#156570` |
+| Token                     | Kolibri override                  | Default   |
+| ------------------------- | --------------------------------- | --------- |
+| `--color-primary`         | `--kolibri-color-primary`         | `#156570` |
 | `--color-primary-variant` | `--kolibri-color-primary-variant` | `#207a8b` |
-| `--color-secondary` | `--kolibri-color-secondary` | `#ccebf7` |
-| `--color-danger` | `--kolibri-color-danger` | `#ca0101` |
-| `--color-warning` | `--kolibri-color-warning` | `#c44931` |
-| `--color-success` | `--kolibri-color-success` | `#005c45` |
-| `--color-subtle` | `--kolibri-color-subtle` | `#576164` |
-| `--color-light` | `--kolibri-color-light` | `#ffffff` |
-| `--color-text` | `--kolibri-color-text` | `#202020` |
-| `--color-mute` | `--kolibri-color-mute` | `#f2f3f4` |
-| `--color-mute-variant` | `--kolibri-color-mute-variant` | `#bec5c9` |
-| `--color-visited` | `--kolibri-color-visited` | `#551a8b` |
+| `--color-secondary`       | `--kolibri-color-secondary`       | `#ccebf7` |
+| `--color-danger`          | `--kolibri-color-danger`          | `#ca0101` |
+| `--color-warning`         | `--kolibri-color-warning`         | `#c44931` |
+| `--color-success`         | `--kolibri-color-success`         | `#005c45` |
+| `--color-subtle`          | `--kolibri-color-subtle`          | `#576164` |
+| `--color-light`           | `--kolibri-color-light`           | `#ffffff` |
+| `--color-text`            | `--kolibri-color-text`            | `#202020` |
+| `--color-mute`            | `--kolibri-color-mute`            | `#f2f3f4` |
+| `--color-mute-variant`    | `--kolibri-color-mute-variant`    | `#bec5c9` |
+| `--color-visited`         | `--kolibri-color-visited`         | `#551a8b` |
 
 To override a token globally, set the `--kolibri-*` property on the host element or `:root`:
 

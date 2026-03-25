@@ -6,8 +6,7 @@
 			animation: rotation 1.5s linear infinite;
 
 			&:before {
-        border-color: var(--color-primary-variant) var(--color-primary-variant) var(--color-secondary)
-        var(--color-primary-variant);
+				border-color: var(--color-primary-variant) var(--color-primary-variant) var(--color-secondary) var(--color-primary-variant);
 				border-style: solid;
 				border-radius: 50%;
 				display: inline-block;

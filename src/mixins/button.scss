@@ -13,14 +13,13 @@
 			border-style: solid;
 			border-radius: var(--border-radius);
 			border-width: var(--border-width);
+
 			font-weight: 200;
 		}
 
 		&:focus {
 			outline: none;
 		}
-
-
 
 		&--primary {
 			--text-background-color: var(--color-primary);
@@ -124,12 +123,11 @@
 		--kol-focus-outline-offset: -2px;
 	}
 
-  .kol-button--hide-label{
-    .kol-button__text{
-      padding: 0;
-    }
-  }
-
+	.kol-button--hide-label {
+		.kol-button__text {
+			padding: 0;
+		}
+	}
 }
 
 @mixin kol-button-ghost {

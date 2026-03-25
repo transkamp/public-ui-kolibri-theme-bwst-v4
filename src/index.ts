@@ -81,7 +81,7 @@ export const BWSt = KoliBri.createTheme('bwst', {
 	'KOL-SELECT': selectCss,
 	'KOL-SINGLE-SELECT': singleSelect,
 	'KOL-SKIP-NAV': skipNavCss,
-  'KOL-SPIN': spinCss,
+	'KOL-SPIN': spinCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-TABLE-STATEFUL': tableStatefulCss,
 	'KOL-TABLE-STATELESS': tableStatelessCss,

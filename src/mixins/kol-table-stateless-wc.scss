@@ -60,11 +60,11 @@
 			border-color: var(--color-primary);
 			border-style: solid;
 			position: relative;
-			padding: to-rem(8) ;
+			padding: to-rem(8);
 			border-width: 0;
 			border-bottom-width: var(--border-width);
 
-/*			&::before {
+			/*			&::before {
 				background-color: white;
 				display: block;
 				position: absolute;
@@ -91,14 +91,15 @@
 			&--header {
 				color: var(--color-text);
 				background-color: var(--color-light);
+
 				font-weight: bold;
 
 				.kol-button:focus {
 					outline-color: var(--color-mute-variant);
 				}
-        .kol-button__text{
-          font-weight: bold;
-        }
+				.kol-button__text {
+					font-weight: bold;
+				}
 			}
 
 			&--ascending,
@@ -233,13 +234,12 @@
 			line-height: 1;
 		}
 
-    tbody tr:nth-child(2n){
-      background-color: var(--color-mute);
-    }
+		tbody tr:nth-child(2n) {
+			background-color: var(--color-mute);
+		}
 
-    tbody tr:nth-child(2n) th{
-      background-color: var(--color-light);
-    }
-
+		tbody tr:nth-child(2n) th {
+			background-color: var(--color-light);
+		}
 	}
 }

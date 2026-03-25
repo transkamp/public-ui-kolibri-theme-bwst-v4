@@ -6,18 +6,17 @@
 @layer kol-theme-component {
 	@include kol-icon-theme;
 	.kol-accordion {
-
-    //box-shadow: 0px 1px 1px rgba(60,64,67,0.3),0 0px 0px 1px rgba(60,64,67,0.15);
+		//box-shadow: 0px 1px 1px rgba(60,64,67,0.3),0 0px 0px 1px rgba(60,64,67,0.15);
 		border-radius: var(--border-radius);
 		display: grid;
 		width: 100%;
 		height: 100%;
 
-    &:has(:focus-visible) {
-      @include focus-outline;
-    }
+		&:has(:focus-visible) {
+			@include focus-outline;
+		}
 
-/*		&:focus-within {
+		/*		&:focus-within {
 			@include focus-outline;
 		}*/
 
@@ -26,15 +25,15 @@
 			padding-right: to-rem(8);
 			padding-bottom: to-rem(12);
 			padding-left: 2.25em;
-      border-bottom: 1px solid var(--color-mute-variant);
+			border-bottom: 1px solid var(--color-mute-variant);
 		}
 
 		&__heading {
-      border-top: 1px solid var(--color-mute-variant);
 			margin: 0;
-      &:hover{
-        background-color: var(--color-secondary);
-      }
+			border-top: 1px solid var(--color-mute-variant);
+			&:hover {
+				background-color: var(--color-secondary);
+			}
 		}
 
 		&__heading-button {

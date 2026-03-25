@@ -5,9 +5,9 @@
 @layer kol-theme-component {
 	@include kol-icon-theme;
 
-  .kol-input-range__input:focus{
-    outline-width: 0;
-  }
+	.kol-input-range__input:focus {
+		outline-width: 0;
+	}
 
 	.kol-input-container {
 		padding: 0;
@@ -28,18 +28,19 @@
 		}
 
 		&__input--range {
+			border-radius: var(--border-radius);
 			height: to-rem(8);
 			padding: 0;
-      border-radius: var(--border-radius);
-      border-width: 0;
-      &::-webkit-slider-thumb{
-        -webkit-appearance: none;
-        background: var(--color-primary-variant);
-      }
+			border-width: 0;
 
-      &::-moz-range-thumb{
-        background: var(--color-primary-variant);
-      }
+			&::-webkit-slider-thumb {
+				background: var(--color-primary-variant);
+				-webkit-appearance: none;
+			}
+
+			&::-moz-range-thumb {
+				background: var(--color-primary-variant);
+			}
 		}
 	}
 }

@@ -6,11 +6,10 @@
 		@include kol-button('kol-button');
 
 		background-color: var(--color-light);
-//		box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
-    border: to-rem(1) solid var(--color-subtle);
 		border-radius: $border-radius;
 		width: 100%;
 		height: 100%;
+		border: to-rem(1) solid var(--color-subtle);
 
 		&__header {
 			display: block;
