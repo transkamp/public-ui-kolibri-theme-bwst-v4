@@ -1,43 +1,41 @@
-@use '../rem' as *;
+@use '../mixins/link' as *;
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	:is(a, button) {
+	@include kol-icon-theme;
+	@include kol-link('kol-button');
+
+	.kol-button {
+		$root: &;
+
 		color: var(--color-primary);
 
 		font-weight: 400;
 		font-style: normal;
-		text-decoration-line: underline;
-	}
 
-	:is(a, button):focus {
-		outline: none;
-	}
+		&:focus {
+			outline: none;
 
-	:is(a, button):focus .kol-span-wc {
-		outline: var(--border-width) solid;
-		border-radius: calc(var(--border-radius) / 2);
-		outline-offset: calc(rem(16) / 8);
-	}
+			--text-border-radius: var(--border-radius);
+			--text-outline: calc(var(--border-width) * 2) solid;
+		}
 
-	:is(a, button):visited {
-		color: var(--visited);
-	}
+		&:visited {
+			color: var(--visited);
+		}
 
-	.hidden {
-		display: none;
+		&__text {
+			@at-root #{$root}:focus & {
+				outline: var(--text-outline);
+				border-radius: var(--text-border-radius);
+			}
 
-		visibility: hidden;
-	}
-
-	.skip {
-		position: absolute;
-		left: rem(-99999);
-		z-index: 9999999;
-	}
-
-	.skip:focus {
-		background: white;
-		position: unset;
-		left: unset;
+			.kol-span__label {
+				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
+					text-decoration-thickness: 0.25em;
+				}
+			}
+		}
 	}
 }

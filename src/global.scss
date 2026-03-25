@@ -1,41 +1,25 @@
-@use 'rem' as *;
+@use 'mixins/to-rem' as *;
 
 @layer kol-theme-global {
-	:root {
-		--blue: #6495ed;
-		--white: #faf0e6;
-		background-color: var(--blue);
-	}
-
 	:host {
-		background-color: #ca0101; /* smoketest */
-		--label-weight: 700;
-		--label-size: #{rem(calc(0.9 * 16))};
-		--label-color: #000000;
-		--box-shadow-inputs: #{rem(0)} #{rem(2)} #{rem(8)} #{rem(2)} rgb(8, 35, 48, 0.24);
-		--page-bg: #ffffff;
-		--element-bg: #eee;
-		--border-radius: 4px;
-		--font-family: 'Noto Sans Regular', Arial, helvetica, sans-serif;
-		--font-size: #{rem(16)};
-		--spacing: #{rem(4)};
-		--border-width: 1px;
-		--color-primary: #156570;
-		--color-primary-light: #1a7a87;
-		--color-primary-variant: #207a8b;
-		--color-primary-focus: hsl(from var(--color-primary-variant) h calc(s - 10) l);
-		--color-danger: #ca0101;
-		--color-warning: #c44931;
-		--color-success: #005c45;
-		--color-subtle: #576164;
-		--color-light: #ffffff;
-		--color-text: #000000;
-		--color-mute: #f2f3f4;
-		--color-mute-variant: #bec5c9;
-		--visited: var(--color-primary-light);
-		--border-color: #ededed;
-		--a11y-min-size: #{rem(44)};
-		--button-font-weight: 400;
+		--border-radius: var(--kolibri-border-radius, #{to-rem(4)});
+		//--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
+		--font-family: var(--kolibri-font-family, 'Noto Sans Regular', Arial, helvetica, sans-serif);
+		--font-size: var(--kolibri-font-size, #{to-rem(16)});
+		--spacing: var(--kolibri-spacing, #{to-rem(4)});
+		--border-width: var(--kolibri-border-width, 1px);
+		--color-primary: var(--kolibri-color-primary, #156570);
+		--color-primary-variant: var(--kolibri-color-primary-variant, #207a8b);
+		--color-secondary: var(--kolibri-color-secondary, #ccebf7);
+		--color-danger: var(--kolibri-color-danger, #ca0101);
+		--color-warning: var(--kolibri-color-warning, #c44931);
+		--color-success: var(--kolibri-color-success, #005c45);
+		--color-subtle: var(--kolibri-color-subtle, #576164);
+		--color-light: var(--kolibri-color-light, #ffffff);
+		--color-text: var(--kolibri-color-text, #202020);
+		--color-mute: var(--kolibri-color-mute, #f2f3f4);
+		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
+		--color-visited: var(--kolibri-color-visited, #551a8b); // Html defined standard value https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
 	}
 
 	:host {
@@ -53,56 +37,62 @@
 		padding: 0;
 	}
 
-	*[tabindex]:focus-visible,
-	button[tabindex]:focus,
+	*[tabindex]:not([role="tabpanel"]):focus,
 	.kol-input:not(.checkbox, .radio) .input:focus-within,
 	.kol-input:is(.checkbox, .radio) input:focus,
 	summary:focus {
 		outline-color: var(--color-primary-variant);
 		outline-style: solid;
-		outline-width: 2px;
-		cursor: pointer;
-		outline-offset: 2px;
+		outline-width: to-rem(3);
+		outline-offset: to-rem(2);
 		transition: outline-offset 0.2s linear;
 	}
 
-	.kol-heading-wc {
+  *[tabindex][role="tabpanel"] {
+    position: relative;
+    top: -4px;
+  }
+
+  *[tabindex][role="tabpanel"]:focus{
+    outline-color: var(--color-primary-variant);
+    outline-style: solid;
+    outline-width: to-rem(3);
+    outline-offset: 0;
+  }
+
+
+	.kol-headline {
 		font-weight: 700;
 	}
 
-	.kol-tooltip-wc .tooltip-floating {
-		border-radius: var(--border-radius);
-		border: var(--border-width) solid var(--color-subtle);
+	.kol-tooltip {
+		&__floating {
+			border-radius: var(--border-radius);
+			border: var(--border-width) solid var(--color-subtle);
+		}
+
+		&__arrow {
+			background-color: var(--color-light);
+			border: var(--border-width) solid var(--color-subtle);
+		}
+
+		&__content {
+			background-color: var(--color-light);
+			border-radius: var(--border-radius);
+			padding: to-rem(8) to-rem(12);
+
+			line-height: 1.5;
+		}
 	}
 
-	.kol-tooltip-wc .tooltip-arrow {
-		border: var(--border-width) solid var(--color-subtle);
-	}
-
-	.kol-tooltip-wc .tooltip-area {
-		background-color: var(--color-light);
-	}
-
-	.kol-tooltip-wc .tooltip-content {
-		border-radius: var(--border-radius);
-		padding: rem(8) rem(12);
-
-		line-height: 1.5;
-	}
-
-	.kol-span-wc,
-	.kol-span-wc > span {
-		gap: rem(8);
-	}
-
-	a:is(:focus, :hover):not([aria-disabled]),
-	button:is(:focus, :hover):not([disabled]) {
-		text-decoration-thickness: calc(rem(16) / 8);
+	.kol-span,
+	.kol-span__container {
+		gap: to-rem(8);
 	}
 
 	.badge-text-hint {
 		color: var(--color-text);
-		background: var(--color-mute-variant);
+		background-color: var(--color-mute-variant);
 		border-radius: 3px;
 		padding: 0 0.3em;
 	}
@@ -115,13 +105,5 @@
 		100% {
 			transform: rotate(360deg);
 		}
-	}
-}
-
-@layer kol-component {
-	input:not([type='checkbox'], [type='radio']),
-	select:not([multiple], [size]) {
-		border-radius: var(--border-radius);
-		border-width: var(--border-width);
 	}
 }

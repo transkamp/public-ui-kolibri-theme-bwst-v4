@@ -1,30 +1,24 @@
-@use '../rem' as *;
+@use '../mixins/to-rem' as *;
 
 @layer kol-theme-component {
-	:host progress,
-	:host span {
-		display: block;
-		width: rem(0);
-		height: rem(0);
-	}
+	.kol-progress {
 
-	:host svg line:first-child,
-	:host svg circle:first-child {
-		fill: transparent;
-		stroke: var(--color-mute-variant);
-	}
+    &__bar-background {
+    fill: var(--color-mute);
+    stroke: transparent;
+    outline-width: 0;
+  }
 
-	:host svg line:last-child,
-	:host svg circle:last-child {
-		fill: transparent;
-		stroke: var(--color-primary);
-	}
+		&__bar-progress {
+			fill: var(--color-primary-variant);
+		}
 
-	.cycle .progress {
-		stroke: var(--color-primary-variant);
-	}
+		&__cycle-background {
+			stroke: var(--color-mute-variant);
+		}
 
-	.bar .progress {
-		fill: var(--color-primary-variant);
+		&__cycle-progress {
+			stroke: var(--color-primary-variant);
+		}
 	}
 }

@@ -2,7 +2,6 @@ import { KoliBri } from '@public-ui/components';
 import abbrCss from './components/abbr.scss';
 import accordionCss from './components/accordion.scss';
 import alertCss from './components/alert.scss';
-import avatarCss from './components/avatar.scss';
 import badgeCss from './components/badge.scss';
 import breadcrumbCss from './components/breadcrumb.scss';
 import buttonLinkCss from './components/button-link.scss';
@@ -10,8 +9,11 @@ import buttonCss from './components/button.scss';
 import cardCss from './components/card.scss';
 import comboboxCss from './components/combobox.scss';
 import detailsCss from './components/details.scss';
+import dialogCss from './components/dialog.scss';
+import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
+import iconCss from './components/icon.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
 import inputColorCss from './components/input-color.scss';
 import inputDateCss from './components/input-date.scss';
@@ -24,13 +26,12 @@ import inputRangeCss from './components/input-range.scss';
 import inputTextCss from './components/input-text.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
-import modalCss from './components/modal.scss';
 import navCss from './components/nav.scss';
 import paginationCss from './components/pagination.scss';
 import popoverButtonCss from './components/popover-button.scss';
 import progressCss from './components/progress.scss';
 import selectCss from './components/select.scss';
-import singleSelectCss from './components/single-select.scss';
+import singleSelect from './components/single-select.scss';
 import skipNavCss from './components/skip-nav.scss';
 import spinCss from './components/spin.scss';
 import splitButtonCss from './components/split-button.scss';
@@ -49,7 +50,6 @@ export const BWSt = KoliBri.createTheme('bwst', {
 	'KOL-ABBR': abbrCss,
 	'KOL-ACCORDION': accordionCss,
 	'KOL-ALERT': alertCss,
-	'KOL-AVATAR': avatarCss,
 	'KOL-BADGE': badgeCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
 	'KOL-BUTTON': buttonCss,
@@ -57,8 +57,11 @@ export const BWSt = KoliBri.createTheme('bwst', {
 	'KOL-CARD': cardCss,
 	'KOL-COMBOBOX': comboboxCss,
 	'KOL-DETAILS': detailsCss,
+	'KOL-DIALOG': dialogCss,
+	'KOL-DRAWER': drawerCss,
 	'KOL-FORM': formCss,
 	'KOL-HEADING': headingCss,
+	'KOL-ICON': iconCss,
 	'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 	'KOL-INPUT-COLOR': inputColorCss,
 	'KOL-INPUT-DATE': inputDateCss,
@@ -71,15 +74,14 @@ export const BWSt = KoliBri.createTheme('bwst', {
 	'KOL-INPUT-TEXT': inputTextCss,
 	'KOL-LINK': linkCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
-	'KOL-MODAL': modalCss,
 	'KOL-NAV': navCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-POPOVER-BUTTON': popoverButtonCss,
 	'KOL-PROGRESS': progressCss,
 	'KOL-SELECT': selectCss,
-	'KOL-SINGLE-SELECT': singleSelectCss,
+	'KOL-SINGLE-SELECT': singleSelect,
 	'KOL-SKIP-NAV': skipNavCss,
-	'KOL-SPIN': spinCss,
+  'KOL-SPIN': spinCss,
 	'KOL-SPLIT-BUTTON': splitButtonCss,
 	'KOL-TABLE-STATEFUL': tableStatefulCss,
 	'KOL-TABLE-STATELESS': tableStatelessCss,

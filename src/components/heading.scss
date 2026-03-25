@@ -1,34 +1,33 @@
-@use '../rem' as *;
+@use '../mixins/typography' as *;
 
 @layer kol-theme-component {
-	.headline-h1,
-	.headline-h2,
-	.headline-h3,
-	.headline-h4,
-	.headline-h5,
-	.headline-h6 {
-		color: inherit;
-		font-style: normal;
-	}
+	.kol-headline {
+		&--h1 {
+			@include kol-typography-h1;
+		}
 
-	.headline-h1,
-	.headline-h2,
-	.headline-h3 {
-		font-weight: 700;
-	}
+		&--h2 {
+			@include kol-typography-h2;
+		}
 
-	.headline-h1 {
-		font-size: rem(24);
-		line-height: rem(28);
-	}
+		&--h3 {
+			@include kol-typography-h3;
+		}
 
-	.headline-h2 {
-		font-size: rem(20);
-		line-height: rem(28);
-	}
+		&--h1,
+		&--h2,
+		&--h3,
+		&--h4,
+		&--h5,
+		&--h6 {
+			color: inherit;
+			font-style: normal;
+		}
 
-	.headline-h3 {
-		font-size: rem(calc(1.125 * 16));
-		line-height: rem(24);
+		&--h1,
+		&--h2,
+		&--h3 {
+			font-weight: 700;
+		}
 	}
 }

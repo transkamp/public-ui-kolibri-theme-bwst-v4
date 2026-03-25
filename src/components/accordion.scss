@@ -1,45 +1,73 @@
-@use '../rem' as *;
+@use '../mixins/to-rem' as *;
 @use '../mixins/focus-outline' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	.accordion__content {
-		padding-right: rem(8);
-		padding-bottom: rem(12);
-		padding-left: rem(36);
-	}
+	@include kol-icon-theme;
+	.kol-accordion {
 
-	.kol-span-wc > span {
-		display: flex;
-		place-items: baseline center;
-	}
-
-	:host > div > .kol-heading-wc button {
+    //box-shadow: 0px 1px 1px rgba(60,64,67,0.3),0 0px 0px 1px rgba(60,64,67,0.15);
 		border-radius: var(--border-radius);
-		min-height: rem(calc(2.2 * 16));
-		padding: rem(12) rem(8);
-	}
+		display: grid;
+		width: 100%;
+		height: 100%;
 
-	:host > div > .kol-heading-wc button .kol-span-wc {
-		gap: rem(8);
+    &:has(:focus-visible) {
+      @include focus-outline;
+    }
 
-		font-size: rem(calc(1.125 * 16));
-		font-weight: 700;
-		line-height: rem(16);
-	}
+/*		&:focus-within {
+			@include focus-outline;
+		}*/
 
-	:host > div > .kol-heading-wc button .kol-span-wc > span {
-		gap: 0.5em;
-	}
+		&__content {
+			padding-top: to-rem(12);
+			padding-right: to-rem(8);
+			padding-bottom: to-rem(12);
+			padding-left: 2.25em;
+      border-bottom: 1px solid var(--color-mute-variant);
+		}
 
-	button:focus {
-		outline: none;
-	}
+		&__heading {
+      border-top: 1px solid var(--color-mute-variant);
+			margin: 0;
+      &:hover{
+        background-color: var(--color-secondary);
+      }
+		}
 
-	:host > .accordion:focus-within {
-		@include focus-outline;
-	}
+		&__heading-button {
+			border-radius: var(--border-radius);
+			display: flex;
+			min-height: to-rem(35.2);
+			cursor: pointer;
 
-	.icon {
-		color: var(--color-primary);
+			&:focus-within {
+				.kol-button {
+					outline: 0;
+				}
+			}
+
+			.kol-span {
+				&__container {
+					display: flex;
+					gap: 0.5em;
+					@include kol-typography-accordion;
+				}
+			}
+
+			.kol-button {
+				padding: to-rem(12) to-rem(8);
+
+				:focus {
+					outline: none;
+				}
+			}
+
+			.kol-icon {
+				color: var(--color-primary);
+			}
+		}
 	}
 }

@@ -1,47 +1,47 @@
-@use '../rem' as *;
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	.tree-link {
-		display: block;
-		border: 1px solid transparent;
+	@include kol-icon-theme;
+	.kol-tree-item {
+		$root: &;
+		--tree-item-indentation: #{to-rem(20)};
 
-		&:hover,
-		&:focus-within {
-			background-color: var(--color-primary-variant);
-			border: 1px solid var(--color-primary);
+		&__link {
+			display: block;
+			border: 1px solid transparent;
 
-			& > a {
-				outline-offset: 0;
+			.kol-link {
+				color: var(--color-text);
+				text-align: left;
 			}
 
-			& > a,
-			.toggle-button {
-				color: var(--color-light);
-			}
-		}
+			&:hover,
+			&:focus-within {
+				background-color: var(--color-primary-variant);
+				border: 1px solid var(--color-primary);
 
-		&.active {
-			background-color: var(--color-primary);
-
-			a,
-			.toggle-button {
-				color: var(--color-light);
-			}
-		}
-
-		a {
-			color: var(--color-text);
-			text-align: left;
-
-			.toggle-button:hover {
-				.toggle-button-icon::part(icon) {
-					transform: scale(1.6);
+				.kol-link {
+					color: var(--color-light);
+					outline-offset: 0;
 				}
 			}
 
-			.text {
-				text-decoration: none;
+			&--active {
+				background-color: var(--color-primary);
+
+				.kol-link {
+					color: var(--color-light);
+				}
 			}
+		}
+
+		&__toggle-button:hover &__toggle-button-icon {
+			transform: scale(1.6);
+		}
+
+		&__text {
+			text-decoration: none;
 		}
 	}
 }

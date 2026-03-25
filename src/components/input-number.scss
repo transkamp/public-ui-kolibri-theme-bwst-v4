@@ -1,92 +1,30 @@
-@use '../rem' as *;
-@use '../mixins/alert-wc' as *;
-@use '../mixins/input-error' as *;
-@use '../mixins/typography' as *;
+@use '../@shared/input-core' as *;
+@use '../mixins/input-text.scss' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	:host {
-		@include kol-alert-theme;
-	}
-	.kol-input {
-		gap: rem(4);
-	}
+	@include kol-icon-theme;
+	@include kol-input-text();
 
-	.kol-input .error {
-		order: 1;
-	}
+	.kol-input-number {
+		.kol-input-number__step-button {
+			color: var(--color-primary);
+			border-radius: var(--border-radius);
+			transition-duration: 0.3s;
+			transition-property: background-color, color;
 
-	.kol-input label {
-		order: 2;
+			&:focus {
+				outline: 0;
+			}
 
-		font-size: rem(calc(0.9 * 16));
-		font-weight: 700;
-	}
+			&:hover {
+				color: var(--color-light);
+				background-color: var(--color-primary);
+			}
+		}
 
-	.kol-input .input {
-		order: 3;
-	}
-
-	.kol-input .hint {
-		order: 4;
-		@include kol-typography-hint;
-	}
-
-	input {
-		border: none;
-	}
-
-	input::placeholder {
-		color: var(--color-subtle);
-	}
-
-	.input {
-		background-color: var(--color-light);
-		border-color: var(--color-subtle);
-		border-style: solid;
-		border-radius: var(--border-radius);
-		padding: 0 rem(8);
-		border-width: var(--border-width);
-	}
-
-	.input:is(.icon-left, .icon-right) {
-		padding-right: rem(16);
-		padding-left: rem(16);
-	}
-
-	.input:is(.icon-left, .icon-right) input {
-		padding-right: rem(8);
-		padding-left: rem(8);
-	}
-
-	.input > input:first-child {
-		padding-left: var(--spacing);
-	}
-
-	.input > input:last-child {
-		padding-right: var(--spacing);
-	}
-
-	:not(.disabled) .input:hover {
-		border-color: var(--color-primary);
-	}
-
-	input:disabled {
-		cursor: not-allowed;
-	}
-
-	.required label > span::after {
-		padding-left: 0.125em;
-
-		content: '*';
-	}
-
-	.kol-input.error:not(.hidden-error) {
-		@include input-error;
-	}
-
-	.kol-input.disabled .input {
-		color: var(--color-text);
-		background-color: var(--color-mute);
-		border-color: var(--color-mute-variant);
+		.kol-input {
+			min-width: calc(3 * var(--a11y-min-size) + 8px); // at least 2 buttons + text with a11y min size + gaps
+		}
 	}
 }

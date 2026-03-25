@@ -1,37 +1,50 @@
+@use '~@public-ui/components/index' as *;
+
 @layer kol-theme-component {
-	.dot > span {
-		&:nth-child(1) {
-			background-color: #fc0;
+	.kol-spin {
+		&__loader {
+			animation: rotation 1.5s linear infinite;
+
+			&:before {
+        border-color: var(--color-primary-variant) var(--color-primary-variant) var(--color-secondary)
+        var(--color-primary-variant);
+				border-style: solid;
+				border-radius: 50%;
+				display: inline-block;
+				box-sizing: border-box;
+				width: to-rem(96);
+				height: to-rem(96);
+				border-width: 10px;
+				animation-duration: 1.5s;
+			}
 		}
-		&:nth-child(2) {
-			background-color: red;
-		}
-		&:nth-child(4) {
-			background-color: #666;
+
+		&__spinner-element {
+			&--1 {
+				background-color: var(--color-primary-variant);
+			}
+
+			&--2 {
+				background-color: var(--color-primary-variant);
+			}
+
+			&--3 {
+				background-color: var(--color-primary-variant);
+			}
+
+			&--neutral {
+				background-color: var(--color-secondary);
+			}
 		}
 	}
 
-	/* Override colors for cycle animation */
 	@keyframes prixClipFix {
 		0% {
-			border-color: #fff;
-			clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+			transform: rotate(0deg);
 		}
-		25% {
-			border-color: #666;
-			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
-		}
-		50% {
-			border-color: #fc0;
-			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
-		}
-		75% {
-			border-color: red;
-			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
-		}
+
 		100% {
-			border-color: #000;
-			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+			transform: rotate(360deg);
 		}
 	}
 }
